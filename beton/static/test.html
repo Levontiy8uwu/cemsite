@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="mobile.css" /> -->
+    <title>Отзывы</title>
+    <style>
+        .testimonials {
+            width: 620px;
+            height: 540px;
+            background: whitesmoke;
+            border-radius: 8px;
+            box-shadow: 10px 15px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .testimonials .controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .testimonials button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .testimonials .controls button:focus {
+            outline: none;
+        }
+
+        .testimonials .reviews {
+            padding: 20px;
+        }
+
+        .testimonials .review {
+            display: none;
+            animation: slideIn 0.5s ease-in-out forwards;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .testimonials .review.active {
+            display: block;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+        }
+        .dfdfdfdfdf {
+            box-sizing: border-box;
+            font: 700 45px Montserrat, sans-serif;
+            color: #202020;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .weewewe {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-card-img {
+            box-sizing: border-box;
+            display: block;
+            flex: 0 0 auto;
+            width: 85px;
+            max-width: initial;
+            height: 85px;
+            z-index: 1;
+        }
+        .asddsd {
+            height: 280px;
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: column;
+            align-items: center;
+            align-self: stretch;
+            justify-content: flex-start;
+            padding: 79px 15px 100px 16px;
+            margin-top: -59px;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            box-shadow: 0px 13px 28px rgba(0, 0, 0, 0.03), 0px 50px 50px rgba(0, 0, 0, 0.02), 0px 113px 68px rgba(0, 0, 0, 0.01);
+        }
+        .qu {
+            flex: 0 0 auto;
+            padding: 0;
+            margin: 0;
+            font: 700 20px Montserrat, sans-serif;
+            color: #381ddb;
+        }
+        .rtrt {
+            flex: 0 0 auto;
+            align-self: stretch;
+            padding: 0;
+            margin: 0;
+            margin-top: 5px;
+            font: 500 16px Montserrat, sans-serif;
+            color: #202020;
+            text-align: center;
+        }
+        .competitive-dfdfdfdfdf {
+            font: 700 45px Montserrat, sans-serif;
+            color: #381ddb;
+            text-align: left;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="testimonials">
+        <p class="dfdfdfdfdf"><span class="competitive-dfdfdfdfdf">Отзывы</span><span> наших <br />покупателей</span></p>
+        <div class="reviews">
+            <div class="review active">
+                <div class="qwewweee" style="width: 400px; height: 400px; margin-left:auto;margin-right: auto;">
+                    <div class="weewewe">
+                        <img src="{% static 'image_eed246e1.png' %}" class="feature-card-img" />
+                        <div class="asddsd">
+                            <p class="qu">Качество</p>
+                            <p class="rtrt">zzzzzzzz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="qwewweee" style="width: 400px; height: 400px; margin-left:auto;margin-right: auto;">
+                    <div class="weewewe">
+                        <img src="{% static 'image_eed246e1.png' %}" class="feature-card-img" />
+                        <div class="asddsd">
+                            <p class="qu">Качество</p>
+                            <p class="rtrt">zzzzzzzz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="prev" style="position:absolute;font-size: 60px;color: #6047F5;margin-top:-290px;margin-left: 80px;">&#8249;</button>
+        <button id="next" style="position:absolute;font-size: 60px;color: #6047F5;margin-top:-290px;margin-left: 545px;">&#8250;</button>
+    </div>
+
+    <script>
+        const reviews = document.querySelectorAll('.review');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let currentReview = 0;
+
+        function showReview(index) {
+            reviews.forEach((review, i) => {
+                if (i === index) {
+                    review.classList.add('active');
+                } else {
+                    review.classList.remove('active');
+                }
+            });
+        }
+
+        function next() {
+            currentReview = (currentReview + 1) % reviews.length;
+            showReview(currentReview);
+        }
+
+        function prev() {
+            currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+            showReview(currentReview);
+        }
+
+        nextBtn.addEventListener('click', next);
+        prevBtn.addEventListener('click', prev);
+
+        // Инициализация
+        showReview(currentReview);
+    </script>
+</body>
+</html>
