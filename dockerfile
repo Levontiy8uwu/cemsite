@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Устанавливаем рабочую директорию контейнера
-WORKDIR /beton
+WORKDIR /betsite
 
 # Копируем все файлы проекта в рабочую директорию контейнера
-COPY . /beton/
+COPY . /betsite/

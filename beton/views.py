@@ -1,9 +1,6 @@
 from django.shortcuts import render
-from pyrogram import Client
-from decouple import config
 
 import smtplib
-from getpass import getpass
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
